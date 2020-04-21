@@ -96,7 +96,8 @@ const PurchaseModal = () => {
           })
             .then((res) => res.json())
             .then((json) => {
-              if (json.success) {
+              console.log('json',json)
+              if (json.success) { 
                 purchaseTicketSuccess();
                 markSeatAsPurchased(selectedSeatId);
               } else {
