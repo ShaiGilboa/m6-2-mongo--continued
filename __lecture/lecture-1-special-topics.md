@@ -61,7 +61,6 @@ There are many ways of going about this.
 
 ### Option 2 - Provide a passKey of some sort
 
-import passkeyExample from './assets/passkey-example.png';
 
 <img src='./assets/passkey-example.png' />
 

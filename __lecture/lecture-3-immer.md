@@ -43,7 +43,21 @@ function reducer(state, action) {
   }
 }
 ```
+```js
+const initialState = {
+  burgerToppings: ['lettuce', 'tomato', 'mayo'],
+};
 
+function reducer(state, action) {
+  if (action.type === 'ADD_KETCHUP') {
+    const newBurgerToppings = state.burgerToppings.concat('ketchup')
+    return {
+      ...state,
+      burgerToppings: newBurgerToppings,
+    }
+  }
+}
+```
 ---
 
 <Timer />
@@ -147,7 +161,19 @@ function reducer(state, action) {
   }
 }
 ```
+```js
+const initialState = {
+  burgerToppings: ['lettuce', 'tomato', 'mayo'],
+};
 
+function reducer(state, action) {
+  if (action.type === 'ADD_KETCHUP') {
+    return produce(state, draftState => {
+      draftState.burgerToppings.push('ketchup');
+    })
+  }
+}
+```
 ---
 
 ```js
@@ -180,7 +206,35 @@ function reducer(state, action) {
   }
 }
 ```
+```js
+const initialState = {
+  raceBeganAt: '2020-03-27T12:34:56.000Z',
+  competitors: {
+    orangers: {
+      racers: {
+        clementin: {},
+        tangerin: {},
+      },
+    },
+    teamGalactic: {
+      racers: {
+        speedy: {},
+        rapidly: {},
+        swiftly: {},
+      },
+    },
+  },
+};
 
+function reducer(state, action) {
+  if (action.type === 'REMOVE_RACER_FROM_TEAM') {
+    const { teamId, racerName } = action;
+    return produce(state, draftState => {
+      delete draftState.competitors[teamId].racers[racerName];
+    })
+  }
+}
+```
 ---
 
 Immer makes our lives _much_ easier.
